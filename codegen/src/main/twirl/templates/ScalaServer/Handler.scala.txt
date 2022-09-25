@@ -136,7 +136,7 @@ object @{serviceName}Handler {
       })
 
 @if(service.enableHttpApi){
-      val httpHandler = akka.grpc.HttpApi.serve(@{service.name}.descriptor, handle _)
+      val httpHandler = akka.grpc.scaladsl.httpapi.HttpApi.serve(@{service.name}.descriptor, handle _)
       grpcHandler.orElse(httpHandler)
 }else{
       grpcHandler

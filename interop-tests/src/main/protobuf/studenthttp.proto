@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+//#options
+option java_multiple_files = true;
+option java_package = "example.myapp.student.grpc";
+option java_outer_classname = "StudentProto";
+
+import "google/api/annotations.proto";
+
+package studenthttp;
+//#options
+
+//#services
+////////////////////////////////////// The greeting service definition.
+service HttpStudentService {
+  //////////////////////
+  // Sends a info //
+  ////////*****/////////
+  //      HELLO       //
+  ////////*****/////////
+  rpc GetStudent (StudentRequest) returns (StudentReply) {
+    option (google.api.http) = {
+      post: "/student",
+      response_body: "name"
+    };
+  }
+
+}
+//#services
+
+//#messages
+// The request message
+message StudentRequest {
+  FullName name = 1;
+  int32 age = 2;
+  bool is_student = 3;
+  double weight = 4;
+}
+
+message FullName{
+  string head_name = 1;
+  string tail_name = 2;
+}
+
+// The response message
+message StudentReply {
+  FullName name = 1;
+  int32 age = 2;
+  bool is_student = 3;
+  double weight = 4;
+}
+//#messages

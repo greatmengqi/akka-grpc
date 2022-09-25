@@ -5,7 +5,6 @@
 package akka.grpc.scaladsl
 
 import scala.concurrent.Future
-
 import akka.NotUsed
 import akka.actor.ActorSystem
 import akka.stream.scaladsl.Sink
